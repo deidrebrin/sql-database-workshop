@@ -68,7 +68,7 @@ When a table is referencing an identifier from another table (thereby making tha
 {: .callout}
 
 > ## Challenge
-> Diagram connections between our tables and normalize our dataset!
+> Diagram connections between our tables on post-its and build out the relationships in FMP!
 > 
 > > ## Solution
 > > Tip - start with your primary unit of analysis, finds in our case
