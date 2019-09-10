@@ -25,13 +25,13 @@ Relational databases allow you to leverage your normalized fields to make data e
 > Identify fields that could utilize controlled vocabularies in our dataset
 >
 > > ## Solution
-> > Finds 
-> > * type (Human remains, Hat, Grave goods)
-> > Burials
-> > * type (Pit, Tomb)
-> > Hats
-> > * colors (Black, Orange, Blue, Yellow)
-> > Individuals
-> > * status (High, Low)
+> > * Finds 
+> >   * type (Human remains, Hat, Grave goods)
+> > * Burials
+> >   * type (Pit, Tomb)
+> > * Hats
+> >   * colors (Black, Orange, Blue, Yellow)
+> > * Individuals
+> >   * status (High, Low)
 > {: .solution}
 {: .challenge}
