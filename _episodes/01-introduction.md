@@ -6,7 +6,7 @@ questions:
 - "I want a database...where do I start?"
 - "What is a data model?"
 objectives:
-- "Identify and practice the steps involved in planning a database."
+- "Identify and practice the steps involved in planning a database"
 - "Define a research question"
 - "Construct a data model to address the research question"
 keypoints:
@@ -32,7 +32,9 @@ keypoints:
         * Be persistent but flexible - RQ is your guide, how might change
 
 
+
 **Data model**
+
 Abstract representation of the elements and structure of a database, including information about the properties and relationships between elements. 
 
 ## Let’s get modeling!
