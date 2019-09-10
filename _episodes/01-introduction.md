@@ -16,6 +16,7 @@ keypoints:
 ---
 
 
+## First and foremost...
 
 ## What is SQL?
 
