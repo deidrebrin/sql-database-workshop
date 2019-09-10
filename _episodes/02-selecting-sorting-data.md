@@ -1,113 +1,71 @@
 ---
-title: "Selecting and sorting data"
+title: "Relational Databases"
 teaching: 15
-exercises: 5
+exercises: 2
 questions:
-- "What is a query?"
-- "How do you query databases using SQL?"
-- "How do you retrieve unique values in SQL?"
-- "How do you sort results in SQL?"
+- "What is a flat file?"
+- "What is a relational database?"
+- "Why do unique identifiers matter?"
 objectives:
-- "Understand how SQL can be used to query databases"
-- "Understand how to build queries, using SQL keywords such as `DISTINCT` and `ORDER BY`"
+- "Understand the role and significance of primary and foreign keys"
+- "Understand what it means to normalize data"
 keypoints:
-- "SQL is ideal for querying databases"
+- "Relational databases "
 - "SQL queries have a basic query structure starting with `SELECT` field FROM table with additional keywords and criteria that can be used." 
 ---
 
-## What is a query?
-A query is a question or request for data. For example, "How many journals does our library subscribe to?" When we query a database, we can ask the same question using a common language called Structured Query Language or SQL in what is called a statement. Some of the most useful queries - the ones we are introducing in this first section - are used to return results from a table that match specific criteria.
+## Flat file vs relational databases
 
-
-## Writing my first query
-
-Let's start by opening DB Browser for SQLite and the doaj-article-sample database (see Setup). Choose `Browse Data` and the `articles` table. The articles table contains columns or fields such as `Title`, `Authors`, `DOI`, `URL`, etc.
-
-Let’s write a SQL query that selects only the `Title` column from the `articles` table.
-
-~~~
-SELECT title
-FROM articles;
-~~~
-{: .sql}
-
-We have capitalised the words `SELECT` and `FROM` because they are SQL keywords. This makes no difference to the SQL interpreter as it is case-insensitive, but it helps for readability and is therefore considered good style.
-
-If we want more information, we can add a new column to the list of fields right after `SELECT`:
-
-~~~
-SELECT Title, Authors, ISSNs, Year
-FROM articles;
-~~~
-{: .sql}
-
-Or we can select all of the columns in a table using the wildcard `*`.
-
-~~~
-SELECT *
-FROM articles;
-~~~
-{: .sql}
-
-## Unique values
-
-There may be a situation when you need to retrieve unique records and not multiple duplicate records. The SQL `DISTINCT` keyword is used after `SELECT` to eliminate duplicate records and fetch only unique records. Let's return all of the unique `ISSNs` in a SQL query.
-
-~~~
-SELECT DISTINCT ISSNs
-FROM articles;
-~~~
-{: .sql}
-
-Note, some database systems require a semicolon `;` after each SQL statement. If we select more than one column, then the distinct pairs of values are returned.
-
-~~~
-SELECT DISTINCT ISSNs, Day, Month, Year
-FROM articles;
-~~~
-{: .sql}
-
-## Sorting
-
-We can also sort the results of our queries by using the keyword `ORDER BY`. Let's create a query that sorts the articles table alphabetically by ISSNs using the `ASC` keyword in conjunction with `ORDER BY`. 
-
-~~~
-SELECT *
-FROM articles
-ORDER BY ISSNs ASC;
-~~~
-{: .sql}
-
-The keyword `ASC` tells us to order it in ascending order. Instead, we can use `DESC` to get the descending order sorting by `First_Author`.
-
-~~~
-SELECT *
-FROM articles
-ORDER BY First_Author DESC;
-~~~
-{: .sql}
-
-`ASC` is the default, so by omitting `ASC` or `DESC`, SQLite will sort ascending (ASC).
-
-We can also sort on several fields at once, in different directions. For example, we can order by `ISSNs` descending and then `First_Author` ascending in the same query.
-
-~~~
-SELECT *
-FROM articles
-ORDER BY ISSNs DESC, First_Author ASC;
-~~~
-{: .sql}
+**Flat file or spreadsheet database** is a single table or collection of tables that do not have connections built among them
+* good for simple datasets that are primarily text based
+* most common way researchers start to collect and work with data (i.e. Excel/Google spreadsheets)
 
 > ## Challenge
-> Write a query that returns `Title`, `First_Author`, `ISSNs` and `Citation_Count` from
-> the articles table, ordered by the top cited article and alphabetically by title.
+> Evaluate the demo spreadsheets - where would they excel, where would they fail? Pun intended.
 >
 > > ## Solution
-> > ~~~
-> > SELECT Title, First_Author, ISSNs, Citation_Count
-> > FROM articles
-> > ORDER BY Citation_Count DESC, Title ASC;
-> > ~~~
-> > {: .sql}
+> > Single table:
+> > * Portable, easy to share
+> > * Lacks any controls over data entry, easy to introduce errors, ambiguous unit of analysis, versioning may be confusing, difficult to add analyses from specialists
+> > 
+> > Multiple tables:
+> > * Portable, easy to share, elevant information readily visible
+> > * No way to associate objects in one sheet with other sheets, lack of control over data entry, easy to introduce errors, analyzing would be challenging
 > {: .solution}
 {: .challenge}
+
+
+**Relational databases** on the other hand, allow data to be stored in different tables but with explicit relationships between these tables that provide connections
+* facilitate complex data management
+* ability to simplify data entry while maintaining data integrity (i.e. reduce typos, update values across the entire dataset)
+* manage changes (transactions) to the database to avoid conflicts
+
+Relationships require **unique identifiers** - each row in a table needs to be identifiable in order for another table to reference it. For example, different publishers may enter authors names differently when filling out records about an article (i.e. D. Whitmore vs Deidre Whitmore). However, if I associate the publication with my [ORCID ID](https://orcid.org/) (Open Researcher and Contributor ID) which is unique to just me, not only can I gather all of the publications I've authored together but I can also prevent the dastardly Deidra Whitmore from getting credit for my work.
+
+> ### NOTE: when working with physical items:
+> Unique identifiers **must** to be associated in some way with the object (i.e. tag, label, etc) so you can know which sample you are looking at later, even if you have a flat file system. Take the time to label the object, simply photographing isn't sufficient. Trying to match objects to photographs later is time consuming and sometimes not possible.
+>
+{: .callout}
+
+**Primary keys** - field in a table designated as the identifier; must contain a unique (non-null) value for each row. 
+
+When a table is referencing an identifier from another table (thereby making that connection between the two tables), that field is called a **foreign key**.
+
+> ### A brief note on rows vs records
+> Records in a database typically mean a row of data in a table; however, with relational databases connecting different tables together a record in a user interface may actually contain data from a handful of different rows in different tables. 
+> 
+{: .callout}
+
+> ### A brief note on normalization
+> * To normalize is to structure a relational database so that data is standardized across tables
+>     * this means values will be consistent, the potential for entry errors is minimized, and changes & analyses will be easier
+>     * example: Mezaber Adimenaber site name - trench table + site table
+>     * in this instance - individuals and hats are studied by different people and require different types of data but thinking through the collection process - finds are collected and recorded in the field before they reach a specialist. Additionally, non-experts might not be able to identify a textile as a hat until it has been cleaned and/or pieced back together. So having a general finds table that holds all of the finds and their contextual information allows additional analyses to add details without requiring significant changes to the data model
+> 
+{: .callout}
+
+> > ## Challenge: 
+> > Diagram connections between our tables and normalize our dataset!
+> > ## Solution
+> > Tip - start with your primary unit of analysis, finds in our case
+
