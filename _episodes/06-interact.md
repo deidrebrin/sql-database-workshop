@@ -12,9 +12,7 @@ keypoints:
 ---
 
 
-## Interact with the data
-
-**SELECT statements**
+## SELECT statements (queries)
 * SELECT is how you grab data from the tables in your database and display the results. You can view entire tables, specific columns, and subsets determined by simple or complex queries.
 
 **Wildcards**
@@ -26,7 +24,7 @@ SELECT * FROM burials
 ~~~
 {: .sql}
 
-Applying conditions 
+## Applying conditions 
 
 ~~~
 SELECT burial_id, type
@@ -35,7 +33,7 @@ WHERE type=‘Tomb’
 ~~~
 {: .sql}
 
-Applying multiple conditions (AND/OR/NOT)
+## Applying multiple conditions (AND/OR/NOT)
 
 ~~~
 SELECT burial_id, type
@@ -44,7 +42,7 @@ WHERE type=‘Tomb’ AND burial_id=‘B3'
 ~~~
 {: .sql}
 
-Making changes
+## Making changes
 
 ~~~
 UPDATE burials
@@ -53,7 +51,7 @@ WHERE burial_id=‘B3'
 ~~~
 {: .sql}
 
-**Joins**
+## Joins 
 Let’s check if all of the burial_ids have been entered in the finds table and produce a quick visual of find types and burial types.
 
 ~~~
@@ -68,4 +66,10 @@ INNER JOIN burials ON burials.burial_id=finds.burial_id
 ~~~
 {: .sql}
 
-Types of joins
+### Join types
+* (INNER) JOIN: Returns records that have matching values in both tables
+* LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+* RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+* FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+[Visual depiction of the different types of joins](https://www.w3schools.com/sql/sql_join.asp)

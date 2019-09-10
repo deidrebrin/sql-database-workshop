@@ -27,7 +27,7 @@ We'll use the popular tool **phpMyAdmin** to write and execute SQL queries. phpM
 > {: .solution}
 {: .challenge}
 
-> **Datatypes**
+> ## Datatypes
 > The types of characters that are stored in a column, impacts how the database is able to interact with the data in those columns and how much can fit.
 > Considerations
 > * If your primary key contains text characters use VARCHAR(max size of values)

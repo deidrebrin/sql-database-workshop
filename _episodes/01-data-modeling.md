@@ -21,6 +21,9 @@ keypoints:
     * Write it/them down
     * Beware the scope creep...
 
+![Scope creep](../fig/scope.jpg)
+
+
 * Refine
     * Ask questions (what is known currently, what is the significance, how does this relate to the work of the field(s), etc)
     * Narrow, then narrow further 
@@ -38,6 +41,8 @@ keypoints:
 Abstract representation of the elements and structure of a database, including information about the properties and relationships between elements. 
 
 ## Let’s get modeling!
+
+![Hat](../fig/hat.png)
 
 **Research Question**: Are the number of colors in a hat related to the status of the individual?
 

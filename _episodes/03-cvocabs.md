@@ -33,3 +33,5 @@ Relational databases allow you to leverage your normalized fields to make data e
 > > * colors (Black, Orange, Blue, Yellow)
 > > Individuals
 > > * status (High, Low)
+> {: .solution}
+{: .challenge}
