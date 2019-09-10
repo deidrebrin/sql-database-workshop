@@ -1,74 +1,43 @@
 ---
-title: "Saving queries"
-teaching: 20
-exercises: 10
+title: "MySQL for Drupal and Wordpress"
+teaching: 15
+exercises: 1
 questions:
-- "How can I save a query for future use?"
-- "How can I remove a saved query?"
+- "How do Wordpress and Drupal use MySQL?"
+- "How can I backup and restore my database when using a CMS?"
 objectives:
-- "Learn how to save repeated queries as 'Views' and how to drop them."
+- "Understand how Drupal and Wordpress create and update a database."
+- "Learn how to backup and restore when working with WordPress or Drupal."
 keypoints:
-- "Saving queries as 'Views' allows you to save time and avoid repeating the same operation more than once."
+- "Be sure you understand and test the backup AND restore process for any database you work on."
 ---
 
-## Saving queries for future use
+## WordPress MySQL and Drupal MySQL
+The content management systems WordPress and Drupal use MySQL to store the structure and data of the websites. The CMS automatically builds out the data schema and enters data as you create pages, posts, and content on the front end. However, the first time you look at the database it can be intimidating. 
 
-It is not uncommon to repeat the same operation more than once, for example
-for monitoring or reporting purposes. SQL comes with a very powerful mechanism
-to do this: views. Views are queries saved in the database. You query it as a 
-(virtual) table that is populated every time you query it.
+Let's look at the database for a WordPress site and a Drupal site using **phpmyadmin**.
 
-Creating a view from a query requires you to add `CREATE VIEW viewname AS`
-before the query itself. For example, if we want to save the query giving
-the number of journals in a view, we can write:
 
-~~~
-CREATE VIEW journal_counts AS
-SELECT issns, COUNT(*)
-FROM articles
-GROUP BY issns;
-~~~
-{: .sql}
+### Things to keep in mind…
+* Create and document your database user account and password somewhere secure
+* Make sure the user has privileges to the database
 
-Now, we will be able to access these results with a much shorter notation:
+### Backups
+It is essential that you know how to backup AND restore your database. Make it a practice to perform a backup before executing any complex, large, or basically any operations you wouldn't want to repeat. Be sure to test the restore process also so you know what to do if something goes wrong. Strategize about how you can incorporate database backups into your version control procedures.
 
-~~~
-SELECT *
-FROM journal_counts;
-~~~
-{: .sql}
+Drupal has some quirks that can cause issues when backing up the database. To avoid any issues when restoring a database follow the steps below:
 
-Assuming we do not need this view anymore, we can remove it from the database
-almost as we would a table:
+1. Put site into maintenance mode
+2. Turn off clean URLs
+3. Log in to phpmyadmin and EMPTY each table that begins with the word ‘cache'
+4. Export as SQL (compressed)
+5. Make a note of how many tables and rows are in the database
 
-~~~
-DROP VIEW journal_counts;
-~~~
-{: .sql}
-
-In DBBrowser for SQLite, you can also create a view from any query by omitting 
-the `CREATE VIEW viewname AS` statement and instead, clicking the small Save 
-icon at the bottom of the Execute SQL tab and then clicking __Save as view__. 
-Whatever method you use to create a view, it will appear in the list of views 
-under the Database Structure tab.
-
+When restoring DROP all of the tables in the database before import, check that the number of tables/rows imported are correct, turn clean URLs back on and take the site out of maintenance mode.
 
 > ## Challenge
->
-> Write a query that returns the number of articles published in each journal
-> on each month, sorted from most popular journal to the ones with least
-> publications each month starting from the most recent records. Save this
-> query as a `VIEW`.
->
+> Backup and restore a Drupal site
 > > ## Solution
-> > ~~~
-> > CREATE VIEW journal_counts AS
-> > SELECT COUNT(*), month
-> > FROM articles
-> > GROUP BY issns, month
-> > ORDER BY  count(*) desc, month desc;
-> > ~~~
-> > {: .sql}
+> > Follow the steps above
 > {: .solution}
 {: .challenge}
-

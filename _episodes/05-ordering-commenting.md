@@ -1,77 +1,82 @@
 ---
-title: "Ordering and commenting"
+title: "Migrating Data"
 teaching: 15
-exercises: 0
+exercises: 1
 questions:
-- "What is the order of execution in SQL queries?"
-- "How can you organise and comment more complex SQL queries?"
+- "How do I migrate data from FileMaker Pro to MySQL?"
+- "How do I create tables, primary keys, and foreign keys using SQL?"
 objectives:
-- "Understand how to build queries, and the order in which to build the parts."
+- "Understand how to get data out of one system and into another using your data model"
+- "Learn how to use SQL to quickly build structure and import data"
 keypoints:
-- "Queries often have the structure: SELECT data FROM table WHERE certain criteria are present." 
+- "Migrating data potentially introduces errors and requires careful attention." 
 ---
 
-## Order of execution
+## Migrate data and learn basic SQL
+A handful of the projects explicitly called out that they were using MySQL or content management systems like Wordpress/Drupal which utilize MySQL. Let’s get familiar with SQL by migrating the data we collected in FileMaker to MySQL! 
 
-Let's say we had the following query:
+We'll use the popular tool **phpMyAdmin** to write and execute SQL queries. phpMyAdmin is a free tool used to interact and administer MySQL. It provides an interface to conduct certain operations but also allows users to directly execute SQL. 
 
-~~~
-SELECT Title, Authors
-FROM articles
-WHERE ISSNs = '2067-2764|2247-6202'
-ORDER BY First_Author ASC;
-~~~
-{: .sql}
-
-What is interesting to note about this query is that we don't necessarily have to display the `First_Author` column in our results in order to sort by it. 
-
-We can do this because sorting occurs earlier in the computational pipeline than field selection.
-
-> ## The computer is basically doing this:
+> ## Challenge
+> Export data out of FileMaker Pro and import into MySQL
 >
-> 1. Filtering rows according to WHERE
-> 2. Sorting results according to ORDER BY
-> 3. Displaying requested columns or expressions.
->
+> > ## Solution
+> > 1. Create table statement, add columns, datatypes
+> > 2. Set up primary and foreign keys
+> > 3. Add data!
+> {: .solution}
+{: .challenge}
+
+> **Datatypes**
+> The types of characters that are stored in a column, impacts how the database is able to interact with the data in those columns and how much can fit.
+> Considerations
+> * If your primary key contains text characters use VARCHAR(max size of values)
+> * Sorting (think numeric vs alphabetical, leading zeros)
+> * Different systems support different datatypes (SQLite vs MySQL)
+> 
 {: .callout}
 
-Clauses are written in a fixed order: `SELECT`, `FROM`, `WHERE`, then `ORDER BY`. It is possible to write a query as a single line, but for readability, we recommend to put each clause on its own line.
-
-
-## Complex queries & commenting
-
-Consider the following query:
+## Breakdown of the process
+1. Create table statement, add columns, datatypes
 
 ~~~
-SELECT *
-FROM articles
-WHERE (ISSNs = '2076-0787') OR (ISSNs = '2077-1444') OR (ISSNs = '2067-2764|2247-6202');
+CREATE TABLE burials (burial_id VARCHAR(2), type TEXT)
 ~~~
 {: .sql}
 
-SQL offers the flexibility of iteratively adding new conditions but you may reach a point where the query is difficult to read and inefficient. For instance, we can use `IN` to improve the query and make it more readable:
-
 ~~~
-SELECT *
-FROM articles
-WHERE (ISSNs IN ('2076-0787', '2077-1444', '2067-2764|2247-6202'));
+CREATE TABLE finds (find_id VARCHAR(2), burial_id VARCHAR(2), type TEXT)
 ~~~
 {: .sql}
 
-We started with something simple, then added more clauses one by one, testing
-their effects as we went along.  For complex queries, this is a good strategy, to make sure you are getting what you want.  Sometimes it might help to take a subset of the data that you can easily see in a temporary database to practice your queries on before working on a larger or more complicated database.
-
-When the queries become more complex, it can be useful to add comments. In SQL, comments begin with `--` and end at the end of the line. For example, a
-commented version of the above query can be written as:
+2. Set up primary and foreign keys
 
 ~~~
--- Select all columns
-SELECT * 
--- From the article table
-FROM articles
--- Select only the records that have the following ISSNs in them
-WHERE (ISSNs IN ('2076-0787', '2077-1444', '2067-2764|2247-6202'));
+ALTER TABLE burials
+ADD PRIMARY KEY (burial_id)
 ~~~
 {: .sql}
 
-Although SQL queries often read like plain English, it is *always* useful to write comments especially when the queries become more complex. 
+~~~
+ALTER TABLE finds
+ADD PRIMARY KEY (find_id)
+~~~
+{: .sql}
+
+~~~
+ALTER TABLE finds
+ADD FOREIGN KEY (burial_id) REFERENCES burials(burial_id)
+~~~
+{: .sql}
+
+
+3. Add data!
+    1. Export csv file from FileMaker
+        1. Check order of columns in MySQL and match export
+    2. Import csv file into MySQL
+    3. If we have the time - run through importing without creating table & columns first to show what happens
+
+> ## CSV or comma separated value and TSV or tab separated value
+> * The comma or tab are delimiters (what is being used to deliminate between one cell and the next) but you can also determine qualifiers or ways to enclose the contents of a cell in case the delimiter may occur within the cell contents. 
+> * Ideal for preservation and dissemination as most applications are able to read.
+{: .callout}
