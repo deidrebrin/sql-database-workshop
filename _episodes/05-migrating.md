@@ -24,6 +24,7 @@ We'll use the popular tool **phpMyAdmin** to write and execute SQL queries. phpM
 > > 1. Create table statement, add columns, datatypes
 > > 2. Set up primary and foreign keys
 > > 3. Add data!
+> > A breakdown of the process can be found below.
 > {: .solution}
 {: .challenge}
 
@@ -37,7 +38,16 @@ We'll use the popular tool **phpMyAdmin** to write and execute SQL queries. phpM
 {: .callout}
 
 ## Breakdown of the process
-1. Create table statement, add columns, datatypes
+Create user account with name "demo" and password "demo"
+Create database "demo" with the collation "utf8mb4_unicode_ci"
+Add "demo" user to our new database with full privileges. 
+
+> ## Collation
+> The collation of a database determines how it handles and interprets characters. The collation "utf8mb4_unicode_ci" is based on the Unicode standard and will be able to handle special characters if you are working with multilingual data. 
+> 
+{: .callout}
+
+Create table statement, add columns, datatypes
 
 ~~~
 CREATE TABLE burials (burial_id VARCHAR(2), type TEXT)
@@ -49,7 +59,7 @@ CREATE TABLE finds (find_id VARCHAR(2), burial_id VARCHAR(2), type TEXT)
 ~~~
 {: .sql}
 
-2. Set up primary and foreign keys
+Set up primary and foreign keys
 
 ~~~
 ALTER TABLE burials
@@ -70,11 +80,10 @@ ADD FOREIGN KEY (burial_id) REFERENCES burials(burial_id)
 {: .sql}
 
 
-3. Add data!
+Add data!
     1. Export csv file from FileMaker
-        1. Check order of columns in MySQL and match export
+        1. Check order of columns in MySQL and match when creating the export
     2. Import csv file into MySQL
-    3. If we have the time - run through importing without creating table & columns first to show what happens
 
 > ## CSV or comma separated value and TSV or tab separated value
 > * The comma or tab are delimiters (what is being used to deliminate between one cell and the next) but you can also determine qualifiers or ways to enclose the contents of a cell in case the delimiter may occur within the cell contents. 

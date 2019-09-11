@@ -17,11 +17,7 @@ keypoints:
 
 ## First and foremost...
 
-* Be explicit
-    * Write it/them down
-    * Beware the scope creep...
-
-![Scope creep](../fig/scope.jpg)
+Determine what the research question (RQ) or goal is for a project. 
 
 
 * Refine
@@ -30,21 +26,29 @@ keypoints:
         * What is the timeframe for the work?
         * What are the available resources?
         * Beware the scope creep...
+    * Be explicit about the RQ
+        * Write it (or more commonly them) down
     * Agree on what your role is in relation to the RQ(s)
         * Be explicit - write it down
         * Be persistent but flexible - RQ is your guide, how might change
 
+* Beware the scope creep...
 
+![Scope creep](../fig/scope.jpg)
 
-**Data model**
+Once you've worked together to define the research question and scope of the project you can start working on a data model!
 
-Abstract representation of the elements and structure of a database, including information about the properties and relationships between elements. 
+> ## Data model
+>
+>Abstract representation of the elements and structure of a database, including information about the properties and relationships between elements. 
+>
+{: .callout}
 
 ## Let’s get modeling!
 
 ![Hat](../fig/hat.png)
 
-**Research Question**: Are the number of colors in a hat related to the status of the individual?
+### Research Question: Are the number of colors in a hat related to the status of the individual?
 
 
 ### What information do you need in order to answer this question?

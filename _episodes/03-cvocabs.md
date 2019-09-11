@@ -35,3 +35,28 @@ Relational databases allow you to leverage your normalized fields to make data e
 > >   * status (High, Low)
 > {: .solution}
 {: .challenge}
+
+> ## Challenge
+> Add the controlled vocabularies to our FileMaker Pro database and enter some data!
+> 
+> > ## Solution
+> > Tip: While FileMaker Pro provides the value lists that can be used for controlled vocabularies, it is a good practice to build out a table for each controlled vocabulary and to link to that instead. This will make moving your database to another system faster and easier as there isn't a straightforward way to export value lists from FMP. 
+> > 
+> > Steps for FMP challenge (add details and screenshots)
+> > * Add controlled vocab tables
+> >    * burial_types
+> >    * finds_types
+> >    * colors
+> >    * statuses
+> > 
+> > * Add these tables as value lists
+> > * Enter burial record
+> > * Enter finds records
+> > * Enter hat record
+> > * Enter individual record
+> > 
+> > * Add burial type to find record
+> > * Add portal to finds to burial record
+> >
+> {: .solution}
+{: .challenge}

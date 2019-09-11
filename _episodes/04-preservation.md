@@ -9,14 +9,14 @@ objectives:
 - "Understand how use, reuse, and preservation are related"
 - "Understand what to document and how this facilitates reuse."
 keypoints:
-- "SQL can be used for reporting purposes."
-- "Queries can do arithmetic operations on field values."
+- "Planning for preservation will make your data easier to use."
+- "Documentation is essential to the use, reuse, and presevation of data."
 ---
 
 ## Notes on usability, reusability and preservation
 Planning for preservation from the beginning almost always results in better data overall. Throughout the course of a project, the technologies and resources available to a researcher will change. 
 
-There are different strategies to digital preservation that are selected based on the needs of the project. **Technology preservation**—maintaining hardware and software components so that the data can continue to be read and used—is often not an option for researchers as hardware becomes obsolete quickly. Similarly, an **emulation strategy** in which custom software is developed to run on more modern hardware while simulating the same type of interactions and interfaces of the older systems. This gets more complex as time passes and quickly becomes rather expensive to even attempt (aka not likely to happen in research domains). The last strategy, **migration**, is the most common. This means moving data from one system to another and keeping data in formats that support these migrations (i.e. nonproprietary). By acknowledging that your data is likely to move to an entirely different database system over the course of your research changes how you invest your time and resources. 
+There are different strategies to digital preservation that are selected based on the needs of the project. **Technology preservation**—maintaining hardware and software components so that the data can continue to be read and used—is often not an option for researchers as hardware becomes obsolete quickly. Similarly, an **emulation strategy** in which custom software is developed to run on more modern hardware while simulating the same type of interactions and interfaces of the older systems. This gets more complex as time passes and quickly becomes rather expensive to even attempt (aka not likely to happen in research domains). The last strategy, **migration**, is the most common. This means moving data from one system to another and keeping data in formats that support these migrations (i.e. nonproprietary). Acknowledging that your data is likely to move to an entirely different database system over the course of your research changes how you invest your time and resources. 
 
 ## Use, reuse, and preservation are all related
 * The techniques that support the preservation of research data also facilitate the use and reuse of the data. 
@@ -39,19 +39,23 @@ You don’t have to start from scratch - many research domains have standards su
 >
 > > ## Solution
 > > ### Project documentation 
+> > Tips: Documentation doesn't need to be pretty nor even written in complete sentences. It does need to be clear and comprehensive. Bullet points are great for getting things down. Ask a colleague or friend to read through and confirm that the points are understandable. 
+> > 
+> > Documentation is alive! It should be updated and interacted with frequently (think of it as a tamagotchi).
+> > 
 > > * Deidre's Hat Project
-> > * Project background: In 2500 Deidre's archaeological project began investigating the hat practices of the ancient HumTech culture. Excavations took place from 2500 - 2505 uncovering a variety of burials containing individuals with well-preserved hats. 
+> > * Project background: In 2500 Deidre's archaeological project began investigating the hat practices of the ancient HumTech culture. Excavations took place from 2500 - 2505 uncovering a variety of burials containing individuals with well-preserved hats. List of participants with years and roles.
 > > * Methodology: Excavation following Museum of London Archaeology Service practices. Data was collected and maintained in a variety of systems starting with Excel spreadsheets (2500) before migrating to a FileMaker Pro database in (2502) and finally a MySQL database in (2504). 
-> > * Site information: HumTech Site coordinates, also referred to as CDH or Center for Digital Humanities
+> > * Site information: HumTech Site coordinates, also referred to as CDH or Center for Digital Humanities.
 > > ### Data documentation
 > > * Burials - prepared grave containing human remains. 
 > > 	* Tomb burial - enclosed with stone
 > > 	* Pit burial - earthen enclosure
 > > * Finds - each find recovered during the excavation was recorded in the primary finds table. After entry, the finds were distributed to the relevant specialist and further analyzed.
 > > * Specialist analyses 
-> > 	* Hats - textiles identified as hats through an examination of their shape, weave, and hatness. Reference for what makes a hat a hat (someone has...).
+> > 	* Hats - textiles identified as hats through an examination of their shape, weave, and hatness (note to self- go to hat specialist and ask for a more detailed description of what constitutes hatness). Reference for what makes a hat a hat (someone has...).
 > > 		* Colors were categorized by running elmental analyses to identify the dyes found in the textiles. Insert list of dyes and the associated colors. 
-> > 	* Individuals - human remains with 40% or more of what was determined to be a single individual were given a unique record. Describe osteological methods used to determine one individual from another (aging, sexing, metrics, etc). Reference any standards used in this analysis. 
+> > 	* Individuals - human remains with 40% or more identifiable bones of what was determined to be a single individual were given a unique record. Describe osteological methods used to determine one individual from another (aging, sexing, metrics, etc). Reference any standards used in this analysis. 
 > > 		* Status was determined by the type of burial an individual was discovered in and the presence or abscence of grave goods. Tomb burials with grave goods were deemed "High" status while pit burials without grave goods were "Low". In cases where a tomb burial did not contain grave goods or pit burial did contain grave goods, the status was deemed "Low" as well. 
 > > 
 > {: .solution}
