@@ -38,9 +38,9 @@ We'll use the popular tool **phpMyAdmin** to write and execute SQL queries. phpM
 {: .callout}
 
 ## Breakdown of the process
-Create user account with name "demo" and password "demo"
-Create database "demo" with the collation "utf8mb4_unicode_ci"
-Add "demo" user to our new database with full privileges. 
+* Create user account with name "demo" and password "demo"
+* Create database "demo" with the collation "utf8mb4_unicode_ci"
+* Add "demo" user to our new database with full privileges. 
 
 > ## Collation
 > The collation of a database determines how it handles and interprets characters. The collation "utf8mb4_unicode_ci" is based on the Unicode standard and will be able to handle special characters if you are working with multilingual data. 
