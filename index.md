@@ -5,6 +5,6 @@ This adapted Library Carpentry lesson introduces participants to relational data
 
 > ## Prerequisites
 >
-> You will need to install **XAMPP**. See [Setup](https://librarycarpentry.org/lc-sql/setup.html) for instructions and further information. We will be using FileMaker Pro for part of the workshop but you are not required to have this installed on your computer.
+> You will need to install **XAMPP**. We will be using FileMaker Pro for part of the workshop but you are not required to have this installed on your computer.
 {: .prereq}
 
