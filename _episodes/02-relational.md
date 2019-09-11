@@ -1,6 +1,6 @@
 ---
 title: "Relational Databases"
-teaching: 15
+teaching: 20
 exercises: 2
 questions:
 - "What is a flat file?"
@@ -62,13 +62,12 @@ When a table is referencing an identifier from another table (thereby making tha
 >
 > * To normalize is to structure a relational database so that data is standardized across tables
 >     * this means values will be consistent, the potential for entry errors is minimized, and changes & analyses will be easier
->     * example: Mezaber Adimenaber site name - trench table + site table
 >     * in this instance - individuals and hats are studied by different people and require different types of data but thinking through the collection process - finds are collected and recorded in the field before they reach a specialist. Additionally, non-experts might not be able to identify a textile as a hat until it has been cleaned and/or pieced back together. So having a general finds table that holds all of the finds and their contextual information allows additional analyses to add details without requiring significant changes to the data model
 > 
 {: .callout}
 
 > ## Challenge
-> Diagram connections between our tables and normalize our dataset!
+> Diagram connections between our tables on post-its and build out the relationships in FileMaker Pro
 > 
 > > ## Solution
 > > Tip - start with your primary unit of analysis, finds in our case
